@@ -1,6 +1,3 @@
-# {{- $name := .Values.bridgeEnvironmentVariables.BRIDGE_BASE_ADDRESS | required ".Values.bridgeEnvironmentVariables.BRIDGE_BASE_ADDRESS is required." -}}
-# {{- $name := .Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH_OIDC_CLIENT_ID | required ".Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH_OIDC_CLIENT_ID  is required." -}}
-# {{- $name := .Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH_OIDC_ISSUER_URL | required ".Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH_OIDC_ISSUER_URL is required." -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -52,23 +49,6 @@ spec:
             {{- if .Values.extraEnv }}
               {{- toYaml .Values.extraEnv | nindent 12 }}
             {{- end }}
-            # - name: BRIDGE_BASE_ADDRESS
-            #   value: {{ .Values.bridgeEnvironmentVariables.BRIDGE_BASE_ADDRESS }}
-            # - name: BRIDGE_USER_AUTH
-            #   value: {{ .Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH }}
-            # - name: BRIDGE_K8S_AUTH
-            #   value: {{ .Values.bridgeEnvironmentVariables.BRIDGE_K8S_AUTH }}
-            # - name: BRIDGE_USER_AUTH_OIDC_CLIENT_ID
-            #   value: {{ .Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH_OIDC_CLIENT_ID }}
-            # - name: BRIDGE_USER_AUTH_OIDC_CLIENT_SECRET
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: {{ .Values.secret.secretName }}
-            #       key: clientSecret
-            # - name: BRIDGE_USER_AUTH_OIDC_ISSUER_URL
-            #   value: {{ .Values.bridgeEnvironmentVariables.BRIDGE_USER_AUTH_OIDC_ISSUER_URL }}
-            # - name: BRIDGE_V
-            #   value: {{ .Values.verbosity | quote }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
