@@ -39,8 +39,9 @@ securityContext: {}
 secret:
   secretName: idp-secret
   create: true
-  clientSecret: 
+  clientSecret:
 oidcIdentityProvider: ""
+oidcIdentityProviderEnabled: false
 
 # only modify the string elements, not the claim keys
 claims:
